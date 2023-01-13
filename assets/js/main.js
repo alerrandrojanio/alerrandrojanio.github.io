@@ -64,13 +64,46 @@ tabs.forEach((tab) => {
     tabs.forEach((tab) => {
       tab.classList.remove("qualification__active")
     })
-    target.classList.add("qualification__active")
+    tab.classList.add("qualification__active")
   })
 })
 
 /*==================== SERVICES MODAL ====================*/
+const modalViews = document.querySelectorAll(".services__modal")
+const modalBtns = document.querySelectorAll(".services__button")
+const modalCloses = document.querySelectorAll(".services__modal-close")
+
+const modal = (modalClick) => {
+  modalViews[modalClick].classList.add("active-modal")
+}
+
+modalBtns.forEach((modalBtn, i) => {
+  modalBtn.addEventListener("click", () => {
+    modal(i)
+  })
+})
+
+modalCloses.forEach((modalClose) => {
+  modalClose.addEventListener("click", () => {
+    modalViews.forEach((modalView) => {
+      modalView.classList.remove("active-modal")
+    })
+  })
+})
 
 /*==================== PORTFOLIO SWIPER  ====================*/
+let swiper = new Swiper(".portifolio__container", {
+  cssMode: true,
+  loop: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+})
 
 /*==================== TESTIMONIAL ====================*/
 
